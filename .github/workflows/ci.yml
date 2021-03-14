@@ -31,15 +31,24 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.CR_PAT }}
       -
-        name: Build and push
+        name: Build and push 56
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: ./Containerfile
+          file: ./php56/Containerfile
           platforms: linux/amd64
           push: true
           tags: |
-            oswee/php:latest
             oswee/php:5.6-fpm-mysqli
-            ghcr.io/dzintars/php:latest
             ghcr.io/dzintars/php:5.6-fpm-mysqli
+      -
+        name: Build and push 70
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./php70/Containerfile
+          platforms: linux/amd64
+          push: true
+          tags: |
+            oswee/php:7.0-fpm-mysqli
+            ghcr.io/dzintars/php:7.0-fpm-mysqli
